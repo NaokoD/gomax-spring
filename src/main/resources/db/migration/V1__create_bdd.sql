@@ -1,141 +1,141 @@
 CREATE TABLE Cinema(
-   idCinema INT NOT NULL AUTO_INCREMENT,
-   nomCinema VARCHAR(255) NOT NULL,
-   adresseCinema VARCHAR(255) NOT NULL,
-   codePostalCinema VARCHAR(5) NOT NULL,
-   VilleCinema VARCHAR(255) NOT NULL,
-   PRIMARY KEY(idCinema)
+   id INT NOT NULL AUTO_INCREMENT,
+   nom VARCHAR(255) NOT NULL,
+   adresse VARCHAR(255) NOT NULL,
+   cp VARCHAR(5) NOT NULL,
+   ville VARCHAR(255) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Salle(
-   idSalle INT NOT NULL AUTO_INCREMENT,
-   planSalle VARCHAR(255) NOT NULL,
-   numDeSalle INT NOT NULL,
-   idCinema INT NOT NULL,
-   PRIMARY KEY(idSalle),
-   FOREIGN KEY(idCinema) REFERENCES Cinema(idCinema)
+   id INT NOT NULL AUTO_INCREMENT,
+   plan VARCHAR(255) NOT NULL,
+   numero INT NOT NULL,
+   cinema_id INT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(cinema_id) REFERENCES Cinema(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Tarif(
-   idTarif INT NOT NULL AUTO_INCREMENT,
-   libelleTarif VARCHAR(255) NOT NULL,
-   montantTarif DECIMAL(15,2) NOT NULL,
-   PRIMARY KEY(idTarif)
+   id INT NOT NULL AUTO_INCREMENT,
+   libelle VARCHAR(255) NOT NULL,
+   montant DECIMAL(15,2) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Type_Siege(
-   idTypeSiege INT NOT NULL AUTO_INCREMENT,
-   libelleTypeSige VARCHAR(255) NOT NULL,
-   PRIMARY KEY(idTypeSiege)
+   id INT NOT NULL AUTO_INCREMENT,
+   libelle VARCHAR(255) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Majoration(
-   idMajoration INT NOT NULL AUTO_INCREMENT,
-   libelleMajoration VARCHAR(255) NOT NULL,
-   remiseMajoration DECIMAL(15,2) NOT NULL,
-   PRIMARY KEY(idMajoration)
+   id INT NOT NULL AUTO_INCREMENT,
+   libelle VARCHAR(255) NOT NULL,
+   remise DECIMAL(15,2) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Snack(
-   idSnack INT NOT NULL AUTO_INCREMENT,
-   libelleSnack VARCHAR(255) NOT NULL,
-   prixSnack DECIMAL(15,2) NOT NULL,
-   PRIMARY KEY(idSnack)
+   id INT NOT NULL AUTO_INCREMENT,
+   libelle VARCHAR(255) NOT NULL,
+   prix DECIMAL(15,2) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Horaire(
-   idHoraire INT NOT NULL AUTO_INCREMENT,
+   id INT NOT NULL AUTO_INCREMENT,
    horaire TIME NOT NULL,
-   PRIMARY KEY(idHoraire)
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Categorire(
-   idCategorie INT NOT NULL AUTO_INCREMENT,
-   libelleCategorie VARCHAR(255) NOT NULL,
-   PRIMARY KEY(idCategorie)
+   id INT NOT NULL AUTO_INCREMENT,
+   libelle VARCHAR(255) NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Film(
-   idFilm INT NOT NULL AUTO_INCREMENT,
-   titreFilm VARCHAR(255) NOT NULL,
-   dureeFilm INT NOT NULL,
-   PRIMARY KEY(idFilm)
+   id INT NOT NULL AUTO_INCREMENT,
+   titre VARCHAR(255) NOT NULL,
+   duree INT NOT NULL,
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Client(
-   idClient INT NOT NULL AUTO_INCREMENT,
+   id INT NOT NULL AUTO_INCREMENT,
    nom VARCHAR(255) NOT NULL,
    prenom VARCHAR(255) NOT NULL,
    email VARCHAR(255) NOT NULL,
-   dateDeNaissanceClient DATE NOT NULL,
-   adresseClient VARCHAR(255) NOT NULL,
-   codePostalClient VARCHAR(5) NOT NULL,
-   villeClient VARCHAR(255) NOT NULL,
-   paysClient VARCHAR(255) NOT NULL,
-   numDeFideliteClient VARCHAR(50),
-   PRIMARY KEY(idClient)
+   date_de_naissance DATE NOT NULL,
+   adresse VARCHAR(255) NOT NULL,
+   cp VARCHAR(5) NOT NULL,
+   ville VARCHAR(255) NOT NULL,
+   pays VARCHAR(255) NOT NULL,
+   numero_de_fidelite VARCHAR(50),
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Siege(
-   idSiege INT NOT NULL AUTO_INCREMENT,
-   idTypeSiege INT NOT NULL,
-   idSalle INT NOT NULL,
-   PRIMARY KEY(idSiege),
-   FOREIGN KEY(idTypeSiege) REFERENCES Type_Siege(idTypeSiege),
-   FOREIGN KEY(idSalle) REFERENCES Salle(idSalle)
+   id INT NOT NULL AUTO_INCREMENT,
+   type_siege_id INT NOT NULL,
+   salle_id INT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(type_siege_id) REFERENCES Type_Siege(id),
+   FOREIGN KEY(salle_id) REFERENCES Salle(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Seance(
-   idSeance INT NOT NULL AUTO_INCREMENT,
-   dateSeance DATE NOT NULL,
-   idSalle INT NOT NULL,
-   idFilm INT NOT NULL,
-   idHoraire INT NOT NULL,
-   PRIMARY KEY(idSeance),
-   FOREIGN KEY(idSalle) REFERENCES Salle(idSalle),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(idHoraire) REFERENCES Horaire(idHoraire)
+   id INT NOT NULL AUTO_INCREMENT,
+   date_seance DATE NOT NULL,
+   salle_id INT NOT NULL,
+   film_id INT NOT NULL,
+   horaire_id INT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(salle_id) REFERENCES Salle(id),
+   FOREIGN KEY(film_id) REFERENCES Film(id),
+   FOREIGN KEY(horaire_id) REFERENCES Horaire(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande(
-   idCommande INT NOT NULL AUTO_INCREMENT,
-   idSeance INT NOT NULL,
-   idClient INT NOT NULL,
-   PRIMARY KEY(idCommande),
-   FOREIGN KEY(idSeance) REFERENCES Seance(idSeance),
-   FOREIGN KEY(idClient) REFERENCES Client(idClient)
+   id INT NOT NULL AUTO_INCREMENT,
+   seance_id INT NOT NULL,
+   client_id INT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(seance_id) REFERENCES Seance(id),
+   FOREIGN KEY(client_id) REFERENCES Client(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Categorie_Film(
-   idCategorie INT NOT NULL,
-   idFilm INT NOT NULL,
-   PRIMARY KEY(idCategorie, idFilm),
-   FOREIGN KEY(idCategorie) REFERENCES Categorire(idCategorie),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm)
+   categorie_id INT NOT NULL,
+   film_id INT NOT NULL,
+   PRIMARY KEY(categorie_id, film_id),
+   FOREIGN KEY(categorie_id) REFERENCES Categorire(id),
+   FOREIGN KEY(film_id) REFERENCES Film(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande_Snack(
-   idCommande INT NOT NULL,
-   idSnack INT NOT NULL,
+   commande_id INT NOT NULL,
+   snack_id INT NOT NULL,
    QuantiteSnack INT NOT NULL,
-   PRIMARY KEY(idCommande, idSnack),
-   FOREIGN KEY(idCommande) REFERENCES Commande(idCommande),
-   FOREIGN KEY(idSnack) REFERENCES Snack(idSnack)
+   PRIMARY KEY(commande_id, snack_id),
+   FOREIGN KEY(commande_id) REFERENCES Commande(id),
+   FOREIGN KEY(snack_id) REFERENCES Snack(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande_Siege(
-   idSiege INT NOT NULL,
-   idCommande INT NOT NULL,
-   PRIMARY KEY(idSiege, idCommande),
-   FOREIGN KEY(idSiege) REFERENCES Siege(idSiege),
-   FOREIGN KEY(idCommande) REFERENCES Commande(idCommande)
+   siege_id INT NOT NULL,
+   commande_id INT NOT NULL,
+   PRIMARY KEY(siege_id, commande_id),
+   FOREIGN KEY(siege_id) REFERENCES Siege(id),
+   FOREIGN KEY(commande_id) REFERENCES Commande(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande_Tarif(
-   idTarif INT NOT NULL,
-   idCommande INT NOT NULL,
+   tarif_id INT NOT NULL,
+   commande_id INT NOT NULL,
    nbPlace INT NOT NULL,
-   PRIMARY KEY(idTarif, idCommande),
-   FOREIGN KEY(idTarif) REFERENCES Tarif(idTarif),
-   FOREIGN KEY(idCommande) REFERENCES Commande(idCommande)
+   PRIMARY KEY(tarif_id, commande_id),
+   FOREIGN KEY(tarif_id) REFERENCES Tarif(id),
+   FOREIGN KEY(commande_id) REFERENCES Commande(id)
 )ENGINE=InnoDB;

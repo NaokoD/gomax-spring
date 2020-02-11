@@ -1,1 +1,1 @@
-INSERT INTO tarif (libelleTarif, montantTarif) VALUES ('Normal',12),('Réduit', 6);
+INSERT INTO tarif (libelle, montant) VALUES ('Normal',12),('Réduit', 6);
