@@ -37,10 +37,5 @@ public class Snack {
 	private Long id;
 	private String libelle;
 	private Double prix;
-	
-	
-	//@ManyToOne
-	//private Commande_snack commande_snack;
-	
 
 }
