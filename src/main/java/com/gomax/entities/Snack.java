@@ -37,6 +37,7 @@ public class Snack {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
+
 	@Column(name="libelle")
 	// annotation from Jackson
 	@JsonProperty("name")
@@ -51,5 +52,4 @@ public class Snack {
 	//@ManyToOne
 	//private Commande_snack commande_snack;
 	
-
 }
