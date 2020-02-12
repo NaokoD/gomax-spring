@@ -38,15 +38,14 @@ public class Snack {
 	private Long id;
 
 
-	@Column(name="libelle")
 	// annotation from Jackson
 	@JsonProperty("name")
-	private String name;
+	private String libelle;
 	
-	@Column(name="prix")
+	
 	// annotation from Jackson
 	@JsonProperty("price")
-	private Double price;
+	private Double prix;
 	
 	
 	//@ManyToOne
