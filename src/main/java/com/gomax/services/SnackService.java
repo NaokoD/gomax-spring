@@ -29,29 +29,21 @@ public class SnackService {
 		// (CAST) Iterable <Contact>
 		return (List<Snack>) snackRepo.findAll();
 	}
-	
-	//public Optional<Contact> findContactById(Long id) {
-        // use Optional
-        //return this.contactRepo.findById(id);
-    //}
 
 	public Snack findSnackById(Long id) {
 		return this.snackRepo.findById(id).get();
 	}
 	
 	public Snack saveSnack(Snack s) {
-		return this.snackRepo.save(s);
-		
+		return this.snackRepo.save(s);	
 	}
 	
 	public void deleteSnackById(Long id) {
 		this.snackRepo.deleteById(id);
-		
 	}
 	
 	public boolean existsSnackById(Long id) {
 		return this.snackRepo.existsById(id);
-		
 	}
 	
 }
