@@ -59,7 +59,9 @@ CREATE TABLE Film(
    id BIGINT NOT NULL AUTO_INCREMENT,
    titre VARCHAR(255) NOT NULL,
    duree BIGINT NOT NULL,
-   PRIMARY KEY(id)
+   categorie_id BIGINT NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(categorie_id) REFERENCES Categorire(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Client(
@@ -105,14 +107,6 @@ CREATE TABLE Commande(
    PRIMARY KEY(id),
    FOREIGN KEY(seance_id) REFERENCES Seance(id),
    FOREIGN KEY(client_id) REFERENCES Client(id)
-)ENGINE=InnoDB;
-
-CREATE TABLE Categorie_Film(
-   categorie_id BIGINT NOT NULL,
-   film_id BIGINT NOT NULL,
-   PRIMARY KEY(categorie_id, film_id),
-   FOREIGN KEY(categorie_id) REFERENCES Categorire(id),
-   FOREIGN KEY(film_id) REFERENCES Film(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande_Snack(
