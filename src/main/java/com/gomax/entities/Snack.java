@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,7 +36,20 @@ public class Snack {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String libelle;
-	private Double prix;
 
+
+	@Column(name="libelle")
+	// annotation from Jackson
+	@JsonProperty("name")
+	private String name;
+	
+	@Column(name="prix")
+	// annotation from Jackson
+	@JsonProperty("price")
+	private Double price;
+	
+	
+	//@ManyToOne
+	//private Commande_snack commande_snack;
+	
 }
