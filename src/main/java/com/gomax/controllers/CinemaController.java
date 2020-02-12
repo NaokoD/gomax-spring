@@ -1,6 +1,5 @@
 package com.gomax.controllers;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,4 @@ public class CinemaController {
 	public ResponseEntity<Cinema> getCinemaById(@PathVariable Long id){
 		return new ResponseEntity<Cinema>(this.cinemaService.findCinemaById(id).get(), HttpStatus.OK);
 	}
-=======
-public class CinemaController {
-
->>>>>>> branch 'dev' of https://git.dev.altran-digital.net/lyd/gomax-spring.git
 }
