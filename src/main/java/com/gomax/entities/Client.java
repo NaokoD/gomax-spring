@@ -17,6 +17,7 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private Long id;
+
 	private String nom;
 	private String prenom;
 	private String email;

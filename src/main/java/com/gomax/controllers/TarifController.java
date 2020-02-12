@@ -28,11 +28,11 @@ public class TarifController {
 	
 	@GetMapping("")
 	public ResponseEntity<List<Tarif>> getTarifs(){
-		return new ResponseEntity<List<Tarif>>(this.tarifService.findAllTarifs(), HttpStatus.OK);
+		return new ResponseEntity<>(this.tarifService.findAllTarifs(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Tarif> getTarifById(@PathVariable Long id){
-		return new ResponseEntity<Tarif>(this.tarifService.findTarifById(id).get(), HttpStatus.OK);
+		return new ResponseEntity<>(this.tarifService.findTarifById(id).get(), HttpStatus.OK);
 	}
 }
