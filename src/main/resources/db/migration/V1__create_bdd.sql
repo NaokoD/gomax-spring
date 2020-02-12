@@ -61,7 +61,7 @@ CREATE TABLE Film(
    duree BIGINT NOT NULL,
    categorie_id BIGINT NOT NULL,
    PRIMARY KEY(id),
-   FOREIGN KEY(categorie_id) REFERENCES Categorire(id)
+   FOREIGN KEY(categorie_id) REFERENCES Categorie(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Client(
