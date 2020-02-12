@@ -3,17 +3,17 @@ package com.gomax.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gomax.entities.Snack;
+import com.gomax.entities.Majoration;
 
 // @Repository <=> @Component <=> @Bean (Bean Spring)
 @Repository
-public interface SnackRepository extends CrudRepository<Snack, Long> {
+public interface MajorationRepository extends CrudRepository<Majoration, Long> {
 
 	// queryMethods => methods to JPQL then SQL
 	// SELECT c FROM contact WHERE c.name = ?1
 	// SELECT * FROM contact WHERE lastname = ?1
 
-	public Snack findByLibelle(String name);
+	public Majoration findByLibelle(String libelle);
 	
 	// @Query => write SQL query
 
