@@ -49,7 +49,7 @@ CREATE TABLE Horaire(
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Categorire(
+CREATE TABLE Categorie(
    id BIGINT NOT NULL AUTO_INCREMENT,
    libelle VARCHAR(255) NOT NULL,
    PRIMARY KEY(id)
@@ -61,7 +61,7 @@ CREATE TABLE Film(
    duree BIGINT NOT NULL,
    categorie_id BIGINT NOT NULL,
    PRIMARY KEY(id),
-   FOREIGN KEY(categorie_id) REFERENCES Categorire(id)
+   FOREIGN KEY(categorie_id) REFERENCES Categorie(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Client(
