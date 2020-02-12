@@ -25,12 +25,12 @@ public class ClientController {
 
     @GetMapping("")
     public ResponseEntity<List<Client>> getAllClients(){
-        return new ResponseEntity<List<Client>>(this.clientService.findAllClients(), HttpStatus.OK);
+        return new ResponseEntity<>(this.clientService.findAllClients(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Long id){
-        return new ResponseEntity<Client>(this.clientService.findClientById(id).get(), HttpStatus.OK);
+        return new ResponseEntity<>(this.clientService.findClientById(id).get(), HttpStatus.OK);
     }
 
 }

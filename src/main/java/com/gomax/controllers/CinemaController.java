@@ -22,11 +22,11 @@ public class CinemaController {
 
     @GetMapping("")
     public ResponseEntity<List<Cinema>> getAllCinemas(){
-        return new ResponseEntity<List<Cinema>>(this.cinemaService.findAllCinemas(), HttpStatus.OK);
+        return new ResponseEntity<>(this.cinemaService.findAllCinemas(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cinema> getCinemaById(@PathVariable Long id){
-        return new ResponseEntity<Cinema>(this.cinemaService.findCinemaById(id).get(), HttpStatus.OK);
+        return new ResponseEntity<>(this.cinemaService.findCinemaById(id).get(), HttpStatus.OK);
     }
 }
