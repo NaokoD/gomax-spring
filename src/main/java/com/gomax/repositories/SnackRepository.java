@@ -13,11 +13,17 @@ public interface SnackRepository extends CrudRepository<Snack, Long> {
 	// queryMethods => methods to JPQL then SQL
 	// SELECT c FROM contact WHERE c.name = ?1
 	// SELECT * FROM contact WHERE lastname = ?1
+
+	
+
 	public Snack findByLibelle(String name);
+
 	
 	// @Query => write SQL query
+
 	//@Query("select s from Snack where s.libelle= ?1") // JPQL utilise les noms java 
 	//public Snack findWithLibelle(String name);
+
 	
 	// find ()
 	//SELECT * FROM T;
