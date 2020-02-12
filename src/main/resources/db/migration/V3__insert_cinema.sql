@@ -1,0 +1,1 @@
+INSERT INTO cinema (nom, adresse, cp, ville) VALUES ('GoMax Labege', 'adresse', '31670','Labege');
