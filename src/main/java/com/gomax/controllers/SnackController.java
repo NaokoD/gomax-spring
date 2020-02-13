@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gomax.services.SnackService;
 import com.gomax.entities.Snack;
 
-
-// @RestController <=> @Component <=> @Bean
 @RestController
 @RequestMapping("/snack")
 public class SnackController {
@@ -30,11 +28,6 @@ public class SnackController {
 		this.snackService = sn;
 	}
 
-	//@GetMapping("")
-	//public List<Contact> getContacts() {
-		//return this.contactService.findAllContacts();
-	//}
-	
 	@GetMapping("")
 	public ResponseEntity<List<Snack>> getSnacks() {
 		return new ResponseEntity<>(this.snackService.findAllSnacks(), HttpStatus.OK);
@@ -53,8 +46,6 @@ public class SnackController {
 	@PutMapping("")
 	public ResponseEntity<Snack> putSnack(@RequestBody Snack s) {	
 		
-		// if we don't want to allow creation on PUT
-        // we need to check if contact exist before update (to avoid creation)
         if(this.snackService.existsSnackById(s.getId()))
             return new ResponseEntity<>(this.snackService.saveSnack(s), HttpStatus.OK);
         else
@@ -66,13 +57,5 @@ public class SnackController {
 		this.snackService.deleteSnackById(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
-	
-	  // simple way
-    /*
-    @DeleteMapping("/{id}")
-    public void deleteContactById(@PathVariable Long id) {
-        this.contactService.deleteContactById(id);
-    }
-    */
-	
+
 }
