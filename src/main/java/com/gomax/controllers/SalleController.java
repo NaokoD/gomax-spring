@@ -37,12 +37,17 @@ public class SalleController {
     }
     
     @GetMapping(value = "/{id}/plan", produces = "application/json" )
-    String getPlan(@PathVariable("id") Salle salle) {
-    	String planXML = salle.getPlan();
+    public String getPlan(@PathVariable("id") Salle salle) {
+        return this.PlanSalleFromXmlToJSon(salle);
+    }
 
-    	JSONObject jsonObject = XML.toJSONObject(planXML);
-    	String planJson = jsonObject.toString();
-    	return planJson;
+    public  String PlanSalleFromXmlToJSon(Salle salle){
+        String planXML = salle.getPlan();
+        //System.out.println(planXML);
+        JSONObject jsonObject = XML.toJSONObject(planXML);
+        String planJson = jsonObject.toString();
+        System.out.println(planJson);
+        return planJson;
     }
     
 }
