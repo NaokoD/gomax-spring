@@ -7,10 +7,7 @@ import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gomax.entities.Salle;
 import com.gomax.services.SalleService;
@@ -34,6 +31,21 @@ public class SalleController {
     @GetMapping("/{id}")
     public ResponseEntity<Salle> getSalleById(@PathVariable Long id){
         return new ResponseEntity<>(this.salleService.findSalleById(id).get(), HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Salle> postSalle(@RequestBody Salle salle){
+        return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("")
+    public void deleteSalle(@RequestBody Salle salle){
+       this.salleService.deleteSalle(salle);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Salle> putSaalle(@RequestBody Salle salle){
+        return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.OK);
     }
     
     @GetMapping(value = "/{id}/plan", produces = "application/json" )

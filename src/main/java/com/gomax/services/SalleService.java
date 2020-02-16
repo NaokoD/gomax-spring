@@ -25,4 +25,11 @@ public class SalleService {
     public Optional<Salle> findSalleById(Long id){
         return this.salleRepository.findById(id);
     }
+
+    public void deleteSalle(Salle salle) {
+        this.salleRepository.delete(salle);}
+
+    public Salle saveSalle(Salle salle){
+        return this.salleRepository.save(salle);
+    }
 }
