@@ -23,4 +23,12 @@ public class ClientService {
     public Optional<Client> findClientById(Long id){
         return this.clientRepository.findById(id);
     }
+
+    public Client saveClient(Client client){
+        return this.clientRepository.save(client);
+    }
+
+    public void deleteClient(Client client){
+        this.clientRepository.delete(client);
+    }
 }
