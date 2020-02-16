@@ -15,15 +15,23 @@ public class CinemaService {
     private CinemaRepository cinemaRepository;
 
     @Autowired
-    CinemaService(CinemaRepository cinemaRepository){
+    CinemaService(CinemaRepository cinemaRepository) {
         this.cinemaRepository = cinemaRepository;
     }
 
-    public List<Cinema> findAllCinemas(){
+    public List<Cinema> findAllCinemas() {
         return (List<Cinema>) this.cinemaRepository.findAll();
     }
 
-    public Optional<Cinema> findCinemaById(Long id){
+    public Optional<Cinema> findCinemaById(Long id) {
         return this.cinemaRepository.findById(id);
+    }
+
+    public Cinema saveCinema(Cinema cinema) {
+        return this.cinemaRepository.save(cinema);
+    }
+
+    public void deleteCinema(Cinema cinema) {
+        this.cinemaRepository.delete(cinema);
     }
 }

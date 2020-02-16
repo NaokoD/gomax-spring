@@ -29,4 +29,19 @@ public class CinemaController {
     public ResponseEntity<Cinema> getCinemaById(@PathVariable Long id){
         return new ResponseEntity<>(this.cinemaService.findCinemaById(id).get(), HttpStatus.OK);
     }
+
+    @PostMapping("")
+    public ResponseEntity<Cinema> postCinema(@RequestBody Cinema cinema){
+        return new ResponseEntity<>(this.cinemaService.saveCinema(cinema), HttpStatus.CREATED);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Cinema> putCinema(@RequestBody Cinema cinema){
+        return new ResponseEntity<>(this.cinemaService.saveCinema(cinema), HttpStatus.OK);
+    }
+
+    @DeleteMapping("")
+    public void deleteCinema(@RequestBody Cinema cinema){
+        this.cinemaService.deleteCinema(cinema);
+    }
 }
