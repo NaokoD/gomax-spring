@@ -40,8 +40,8 @@ public class CinemaController {
         return new ResponseEntity<>(this.cinemaService.saveCinema(cinema), HttpStatus.OK);
     }
 
-    @DeleteMapping("")
-    public void deleteCinema(@RequestBody Cinema cinema){
-        this.cinemaService.deleteCinema(cinema);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteCinemaById(@PathVariable Long id){
+        return new ResponseEntity<>(this.cinemaService.deleteCinemaById(id), HttpStatus.OK);
     }
 }

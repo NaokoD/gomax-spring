@@ -39,12 +39,12 @@ public class SalleController {
     }
 
     @DeleteMapping("")
-    public void deleteSalle(@RequestBody Salle salle){
-       this.salleService.deleteSalle(salle);
+    public ResponseEntity<Boolean> deleteSalleById(@PathVariable Long id){
+        return new ResponseEntity<>(this.salleService.deleteSalleById(id), HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<Salle> putSaalle(@RequestBody Salle salle){
+    public ResponseEntity<Salle> putSalle(@RequestBody Salle salle){
         return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.OK);
     }
     
@@ -52,6 +52,8 @@ public class SalleController {
     public String getPlan(@PathVariable("id") Salle salle) {
         return this.PlanSalleFromXmlToJSon(salle);
     }
+
+
 
     public  String PlanSalleFromXmlToJSon(Salle salle){
         String planXML = salle.getPlan();

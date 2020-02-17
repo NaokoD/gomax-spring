@@ -4,9 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.gomax.tools.MapSnackSerializer;
@@ -17,6 +21,9 @@ import lombok.Data;
 @Entity
 @Table(name="commande")
 @Data
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id")
 public class Commande {
 	
 	@Id
@@ -39,9 +46,13 @@ public class Commande {
 
 	private LocalDateTime dateDeCreation;
 
-	@OneToMany
-	@JoinTable(name = "commande_siege", inverseJoinColumns=@JoinColumn(name="siege_id"))
-	private List<Siege> sieges;
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(
+			name = "commande_siege",
+			joinColumns = { @JoinColumn(name = "commande_id") },
+			inverseJoinColumns=@JoinColumn(name="siege_id"))
+	@JsonManagedReference
+	private Set<Siege> sieges;
 
 
 	@ElementCollection

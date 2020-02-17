@@ -22,8 +22,15 @@ public class CommandeController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Commande>> getAllCommandes(){
+    public ResponseEntity<List<Commande>> getCommandes(@RequestParam (required = false) Long seanceId){
+        if(seanceId == null || seanceId.equals("")) {
+            return this.getAllCommandes();
+        }else{
+            return this.getCommandesBySeanceId(seanceId);
+        }
+    }
 
+    public ResponseEntity<List<Commande>> getAllCommandes(){
         return new ResponseEntity<>(this.commandeService.findAllCommandes(), HttpStatus.OK);
     }
 
@@ -32,13 +39,26 @@ public class CommandeController {
         return new ResponseEntity<>(this.commandeService.findCommandeById(id).get(), HttpStatus.OK);
     }
 
-    @PostMapping(path = "", consumes = "application/json")
-/*    public ResponseEntity<String> postCommande(@RequestBody Commande c){
-        return new ResponseEntity<>("Done", HttpStatus.CREATED);
-    }*/
-    public ResponseEntity<Commande> postCommande(@RequestBody Commande c){
-        System.out.println(c);
+    @PostMapping("")
+    public ResponseEntity<Commande> postCommande(@RequestBody Commande commande){
+        System.out.println(commande);
+        return new ResponseEntity<>(this.commandeService.saveCommande(commande), HttpStatus.CREATED);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Commande> putCommande(@RequestBody Commande c){
         return new ResponseEntity<>(this.commandeService.saveCommande(c), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteCommandeById(@PathVariable Long id){
+        return new ResponseEntity<>(this.commandeService.deleteCommandeById(id), HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<Commande>> getCommandesBySeanceId(Long seanceId){
+        return new ResponseEntity<>(this.commandeService.findAllCommandesBySeanceId(seanceId), HttpStatus.OK);
+    }
+
+
 
 }

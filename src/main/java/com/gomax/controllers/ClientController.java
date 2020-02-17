@@ -2,7 +2,6 @@ package com.gomax.controllers;
 
 import com.gomax.entities.Client;
 import com.gomax.services.ClientService;
-import org.omg.CORBA.RepositoryIdHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,9 +40,9 @@ public class ClientController {
         return  new ResponseEntity<>(this.clientService.saveClient(client), HttpStatus.OK);
     }
 
-    @DeleteMapping("")
-    public void deleteClient(Client client){
-        this.clientService.deleteClient(client);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteClientById(Long id){
+        return new ResponseEntity<>(this.clientService.deleteClientById(id), HttpStatus.OK);
     }
 
 }

@@ -31,7 +31,8 @@ public class CinemaService {
         return this.cinemaRepository.save(cinema);
     }
 
-    public void deleteCinema(Cinema cinema) {
-        this.cinemaRepository.delete(cinema);
+    public Boolean deleteCinemaById(Long id) {
+        this.cinemaRepository.deleteById(id);
+        return this.cinemaRepository.existsById(id);
     }
 }

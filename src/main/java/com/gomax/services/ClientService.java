@@ -28,7 +28,8 @@ public class ClientService {
         return this.clientRepository.save(client);
     }
 
-    public void deleteClient(Client client){
-        this.clientRepository.delete(client);
+    public Boolean deleteClientById(Long id){
+        this.clientRepository.deleteById(id);
+        return  this.clientRepository.existsById(id);
     }
 }

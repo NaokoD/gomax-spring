@@ -20,8 +20,4 @@ public class Film {
     private String titre;
     private Long duree;
 
-
-    @ManyToOne
-    private Categorie categorie;
-
 }

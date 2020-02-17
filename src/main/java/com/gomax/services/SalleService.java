@@ -26,8 +26,10 @@ public class SalleService {
         return this.salleRepository.findById(id);
     }
 
-    public void deleteSalle(Salle salle) {
-        this.salleRepository.delete(salle);}
+    public Boolean deleteSalleById(Long id) {
+        this.salleRepository.deleteById(id);
+        return this.salleRepository.existsById(id);
+    }
 
     public Salle saveSalle(Salle salle){
         return this.salleRepository.save(salle);

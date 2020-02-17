@@ -43,8 +43,8 @@ public class TarifController {
 		return new ResponseEntity<>(this.tarifService.saveTarif(tarif), HttpStatus.OK);
 	}
 
-	@DeleteMapping("")
-	public void deleteTarif(@RequestBody Tarif tarif){
-		this.tarifService.deleteTarif(tarif);
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> deleteTarif(@PathVariable Long id){
+		return new ResponseEntity<>(this.tarifService.deleteTarifById(id), HttpStatus.OK);
 	}
 }

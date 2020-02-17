@@ -23,12 +23,6 @@ CREATE TABLE Tarif(
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Type_Siege(
-   id INT NOT NULL AUTO_INCREMENT,
-   libelle VARCHAR(255) NOT NULL,
-   PRIMARY KEY(id)
-)ENGINE=InnoDB;
-
 CREATE TABLE Majoration(
    id INT NOT NULL AUTO_INCREMENT,
    libelle VARCHAR(255) NOT NULL,
@@ -50,17 +44,10 @@ CREATE TABLE Horaire(
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Categorie(
-   id INT NOT NULL AUTO_INCREMENT,
-   libelle VARCHAR(255) NOT NULL,
-   PRIMARY KEY(id)
-)ENGINE=InnoDB;
-
 CREATE TABLE Film(
    id INT NOT NULL AUTO_INCREMENT,
    titre VARCHAR(255) NOT NULL,
    duree INT NOT NULL,
-   categorie_id INT NOT NULL,
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
@@ -80,9 +67,7 @@ CREATE TABLE Client(
 
 CREATE TABLE Siege(
    id INT NOT NULL AUTO_INCREMENT,
-   type_siege_id INT NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(type_siege_id) REFERENCES Type_Siege(id)
+   PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Seance(
