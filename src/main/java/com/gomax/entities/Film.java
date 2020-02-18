@@ -1,10 +1,13 @@
 package com.gomax.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.Set;
+
 
 
 @Entity
@@ -30,5 +33,6 @@ public class Film {
     private String actors;
     @JsonProperty("Poster")
     private String poster;
+
 
 }

@@ -1,6 +1,7 @@
 package com.gomax.controllers;
 
 import com.gomax.entities.Film;
+import com.gomax.entities.Seance;
 import com.gomax.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/films")
@@ -30,6 +32,7 @@ public class FilmController {
     public ResponseEntity<Film> getFilmById(@PathVariable Long id) {
         return new ResponseEntity<>(this.filmService.findFilmById(id).get(), HttpStatus.OK);
     }
+
 
     @PostMapping("")
     public ResponseEntity<Film> postFilm(@RequestBody Film f) {
