@@ -8,13 +8,15 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="siege")
 @Data
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "id")
+//@JsonIdentityInfo(
+//		generator = ObjectIdGenerators.PropertyGenerator.class,
+//		property = "id")
 public class Siege {
 
 	@Id
@@ -23,5 +25,13 @@ public class Siege {
 
 	@ManyToMany(mappedBy = "sieges")
 	@JsonBackReference
-	private List<Commande> commandes;
+	private Set<Commande> commandes;
+
+//	@Transient
+//	public Set<Long> commandeIds;
+//
+//	@PostLoad
+//	private void postLoad() {
+//		commandeIds = commandes.stream().map(Commande::getId).collect(Collectors.toSet());
+//	}
 }

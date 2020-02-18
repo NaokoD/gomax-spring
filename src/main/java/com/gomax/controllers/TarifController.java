@@ -14,6 +14,7 @@ import com.gomax.services.TarifService;
 
 @RestController
 @RequestMapping("/tarifs")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TarifController {
 
 	private TarifService tarifService;

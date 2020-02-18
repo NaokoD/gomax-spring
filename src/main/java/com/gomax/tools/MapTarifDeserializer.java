@@ -23,6 +23,7 @@ public class MapTarifDeserializer extends StdDeserializer<Map<Tarif, Integer>> {
     @Override
     public Map<Tarif, Integer> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonNode node = p.getCodec().readTree(p);
+        System.out.println(node);
         Map<Tarif, Integer> tarifs = new HashMap<Tarif, Integer>();
         Iterator<JsonNode> itr = node.iterator();
         while(itr.hasNext()){

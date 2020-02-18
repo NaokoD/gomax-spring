@@ -33,7 +33,7 @@ public class SiegeService {
         return sieges;
     }*/
 
-    public List<Siege> findSiegesByCommande(Long commandeId){
+    public Set<Siege> findSiegesByCommande(Long commandeId){
         Commande commande = new Commande();
         commande.setId(commandeId);
         return this.siegeRepository.findByCommandes(commande);
@@ -42,4 +42,8 @@ public class SiegeService {
     public List<Siege> findAllSieges() {
         return (List<Siege>) this.siegeRepository.findAll();
     }
+
+//    public Set<Siege> findSiegesBySeance(Long seanceId){
+//        return this.siegeRepository.findBySeance(seanceId);
+//    }
 }

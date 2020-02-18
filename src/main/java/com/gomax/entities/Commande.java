@@ -17,13 +17,17 @@ import com.gomax.tools.MapSnackSerializer;
 import com.gomax.tools.MapTarifDeserializer;
 import com.gomax.tools.MapTarifSerializer;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
 @Table(name="commande")
 @Data
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "id")
+
+//@JsonIdentityInfo(
+//		generator = ObjectIdGenerators.PropertyGenerator.class,
+//		property = "id")
+@EqualsAndHashCode(exclude = {"client","seance","tarifs","sieges","snacks"})
 public class Commande {
 	
 	@Id
