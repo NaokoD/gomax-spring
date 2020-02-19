@@ -47,7 +47,7 @@ public class CommandeService {
 
     public Set<Siege> findOccupiedSeatBySeance(Long seanceId){
         List<Commande> commandes = this.findAllCommandesBySeanceId(seanceId);
-        Set<Siege> sieges = new HashSet<Siege>();
+        Set<Siege> sieges = new HashSet<>();
         for(Commande commande : commandes){
             if(!commande.getSieges().isEmpty()){
                 for(Siege siege : commande.getSieges()){

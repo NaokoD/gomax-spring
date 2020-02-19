@@ -14,6 +14,7 @@ import com.gomax.services.SalleService;
 
 @RestController
 @RequestMapping("/salles")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SalleController {
 
     private SalleService salleService;

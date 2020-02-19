@@ -34,7 +34,4 @@ public class Film {
     private String actors;
     @JsonProperty("Poster")
     private String poster;
-
-
-
 }
