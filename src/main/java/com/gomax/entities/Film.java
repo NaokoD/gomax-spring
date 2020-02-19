@@ -21,6 +21,7 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @JsonProperty("Title")
     private String title;
     @JsonProperty("Runtime")
@@ -33,6 +34,7 @@ public class Film {
     private String actors;
     @JsonProperty("Poster")
     private String poster;
+
 
 
 }

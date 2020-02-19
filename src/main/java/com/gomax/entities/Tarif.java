@@ -17,4 +17,6 @@ public class Tarif {
 	private Long id;
 	
 	private String libelle;
+
+	private Double montant;
 }

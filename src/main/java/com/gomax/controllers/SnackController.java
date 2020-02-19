@@ -18,7 +18,7 @@ import com.gomax.services.SnackService;
 import com.gomax.entities.Snack;
 
 @RestController
-@RequestMapping("/snack")
+@RequestMapping("/snacks")
 public class SnackController {
 	
 	private SnackService snackService;

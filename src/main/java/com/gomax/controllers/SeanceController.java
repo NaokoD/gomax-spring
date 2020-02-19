@@ -47,12 +47,9 @@ public class SeanceController {
     }
 
 
-
-
-
-
     @PostMapping("")
     public ResponseEntity<Seance> postSeance(@RequestBody Seance s) {
+        System.out.println(s);
         return new ResponseEntity<>(this.seanceService.saveSeance(s),
                 HttpStatus.OK);
     }
