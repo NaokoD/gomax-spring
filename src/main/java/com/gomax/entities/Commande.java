@@ -36,6 +36,7 @@ public class Commande {
 	private Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
 
 	@ManyToOne
@@ -58,6 +59,12 @@ public class Commande {
 			inverseJoinColumns=@JoinColumn(name="siege_id"))
 	private Set<Siege> sieges;
 
+	@ManyToMany
+	@JoinTable(
+			name = "commande_accompagnant",
+			joinColumns = { @JoinColumn(name = "commande_id") },
+			inverseJoinColumns=@JoinColumn(name="accompagnant_id"))
+	private Set<Accompagnant> accompagnants;
 
 	@ElementCollection
 	@MapKeyJoinColumn(name="snack_id")

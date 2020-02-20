@@ -51,10 +51,21 @@ CREATE TABLE Film(
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Client(
+CREATE TABLE Utilisateur(
    id INT NOT NULL AUTO_INCREMENT,
-   nom VARCHAR(255) NOT NULL,
    prenom VARCHAR(255) NOT NULL,
+   nom VARCHAR(255) NOT NULL,
+   PRIMARY KEY(id)
+);
+
+CREATE TABLE Accompagnant(
+   accompagnant_id INT NOT NULL,
+   PRIMARY KEY(accompagnant_id),
+   FOREIGN KEY(accompagnant_id) REFERENCES Utilisateur(id)
+);
+
+CREATE TABLE Client(
+   client_id INT NOT NULL,
    email VARCHAR(255) NOT NULL,
    date_de_naissance DATE NOT NULL,
    adresse VARCHAR(255) NOT NULL,
@@ -62,7 +73,8 @@ CREATE TABLE Client(
    ville VARCHAR(255) NOT NULL,
    pays VARCHAR(255) NOT NULL,
    numero_de_fidelite VARCHAR(50),
-   PRIMARY KEY(id)
+   PRIMARY KEY(client_id),
+   FOREIGN KEY(client_id) REFERENCES Utilisateur(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Siege(
@@ -89,7 +101,7 @@ CREATE TABLE Commande(
    date_de_creation DATE DEFAULT CURRENT_DATE,
    PRIMARY KEY(id),
    FOREIGN KEY(seance_id) REFERENCES Seance(id),
-   FOREIGN KEY(client_id) REFERENCES Client(id)
+   FOREIGN KEY(client_id) REFERENCES Client(client_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande_Snack(
@@ -116,4 +128,12 @@ CREATE TABLE Commande_Tarif(
    PRIMARY KEY(commande_id, tarif_id),
    FOREIGN KEY(tarif_id) REFERENCES Tarif(id),
    FOREIGN KEY(commande_id) REFERENCES Commande(id)
+)ENGINE=InnoDB;
+
+CREATE TABLE Commande_Accompagnant(
+    commande_id INT NOT NULL,
+    accompagnant_id INT NOT NULL,
+    PRIMARY KEY(commande_id, accompagnant_id),
+    FOREIGN KEY(accompagnant_id) REFERENCES Accompagnant(accompagnant_id),
+    FOREIGN KEY(commande_id) REFERENCES Commande(id)
 )ENGINE=InnoDB;
