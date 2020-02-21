@@ -17,7 +17,4 @@ public interface SeanceRepo extends CrudRepository<Seance, Long> {
 
     public List<Seance> findByFilm(Film film);
 
-
-
-
 }
