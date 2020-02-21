@@ -5,20 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gomax.services.SnackService;
 import com.gomax.entities.Snack;
 
 @RestController
 @RequestMapping("/snacks")
+@CrossOrigin(origins="http://localhost:4200")
 public class SnackController {
 	
 	private SnackService snackService;
@@ -43,6 +37,11 @@ public class SnackController {
 		return new ResponseEntity<Snack>(this.snackService.saveSnack(s), HttpStatus.CREATED);
 	}
 	
+	//@PostMapping("")
+	//public ResponseEntity<List<Snack>> postListeSnack(@RequestBody List<Snack> s) {
+		//return new ResponseEntity<List<Snack>>(this.snackService.saveSnackAll(s), HttpStatus.CREATED);
+	//}
+
 	@PutMapping("")
 	public ResponseEntity<Snack> putSnack(@RequestBody Snack s) {	
 		

@@ -30,6 +30,10 @@ public class SnackService {
 		return this.snackRepo.save(s);	
 	}
 	
+	public List<Snack> saveSnackAll(List<Snack> s) {
+		return (List<Snack>) this.snackRepo.saveAll(s);	
+	}
+	
 	public void deleteSnackById(Long id) {
 		this.snackRepo.deleteById(id);
 	}
@@ -37,5 +41,4 @@ public class SnackService {
 	public boolean existsSnackById(Long id) {
 		return this.snackRepo.existsById(id);
 	}
-	
 }

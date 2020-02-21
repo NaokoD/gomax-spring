@@ -32,12 +32,15 @@ public class Snack {
 	@JsonProperty("name")
 	private String libelle;
 	
+	// annotation from Jackson
+		//@JsonProperty("image")
+		private String image;
 	
 	// annotation from Jackson
 	@JsonProperty("price")
 	private Double prix;
 
-	private String image;
+
 	
 	
 	//@ManyToOne

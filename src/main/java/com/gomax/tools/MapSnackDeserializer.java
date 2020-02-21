@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.gomax.entities.Snack;
-import com.gomax.entities.Tarif;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,7 +24,9 @@ public class MapSnackDeserializer extends StdDeserializer<Map<Snack, Integer>> {
 
     @Override
     public Map<Snack, Integer> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        System.out.println(p);
         JsonNode node = p.getCodec().readTree(p);
+        System.out.println(node);
         Map<Snack, Integer> snacks = new HashMap<Snack, Integer>();
         Iterator<JsonNode> itr = node.iterator();
         while(itr.hasNext()){
@@ -33,7 +34,7 @@ public class MapSnackDeserializer extends StdDeserializer<Map<Snack, Integer>> {
             System.out.println(snackNode.toString());
             Snack snack = new Snack();
             snack.setId(snackNode.get("id").longValue());
-            snack.setLibelle(snackNode.get("libelle").textValue());
+            snack.setLibelle(snackNode.get("name").textValue());
             snack.setPrix(snackNode.get("price").doubleValue());
             snack.setImage(snackNode.get("image").textValue());
             snacks.put(snack, snackNode.get("qte").intValue());

@@ -5,10 +5,7 @@ import com.gomax.services.SiegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/sieges")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SiegeController {
 
     private SiegeService siegeService;
@@ -32,5 +30,10 @@ public class SiegeController {
         }else{
             return new ResponseEntity<Set<Siege>>(this.siegeService.findSiegesByCommande(commandeId), HttpStatus.OK);
         }
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Siege> postSiege(@RequestBody Siege siege){
+        return new ResponseEntity<>(this.siegeService.saveSiege(siege), HttpStatus.CREATED);
     }
 }

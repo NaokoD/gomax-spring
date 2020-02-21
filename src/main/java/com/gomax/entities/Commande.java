@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gomax.tools.MapSnackDeserializer;
 import com.gomax.tools.MapSnackSerializer;
 import com.gomax.tools.MapTarifDeserializer;
 import com.gomax.tools.MapTarifSerializer;
@@ -35,6 +36,7 @@ public class Commande {
 	private Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
 
 	@ManyToOne
@@ -50,20 +52,26 @@ public class Commande {
 
 	private LocalDateTime dateDeCreation;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany
 	@JoinTable(
 			name = "commande_siege",
 			joinColumns = { @JoinColumn(name = "commande_id") },
 			inverseJoinColumns=@JoinColumn(name="siege_id"))
-	@JsonManagedReference
 	private Set<Siege> sieges;
 
+	@ManyToMany
+	@JoinTable(
+			name = "commande_accompagnant",
+			joinColumns = { @JoinColumn(name = "commande_id") },
+			inverseJoinColumns=@JoinColumn(name="accompagnant_id"))
+	private Set<Accompagnant> accompagnants;
 
 	@ElementCollection
 	@MapKeyJoinColumn(name="snack_id")
 	@CollectionTable(name = "commande_snack")
 	@Column(name="quantite")
 	@JsonSerialize(using = MapSnackSerializer.class)
+	@JsonDeserialize(using = MapSnackDeserializer.class)
 	private Map<Snack, Integer> snacks;
 
 }
