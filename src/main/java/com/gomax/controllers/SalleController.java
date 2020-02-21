@@ -39,7 +39,7 @@ public class SalleController {
         return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteSalleById(@PathVariable Long id){
         return new ResponseEntity<>(this.salleService.deleteSalleById(id), HttpStatus.OK);
     }

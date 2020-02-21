@@ -55,4 +55,14 @@ public class SeanceService {
     public boolean existsSeanceById(Long id) {
         return this.seanceRepo.existsById(id);
     }
+
+    public Integer findNombreDePlaceBySeance(Long id){
+        return this.seanceRepo.findNombreDePlacesPrises(id);
+    }
+
+    public Integer findNombreDePlacesRestantesBySeanceById(Long id){
+        int nbPrises = this.findNombreDePlaceBySeance(id);
+        int nbPlacesDansLaSalle = this.findSeanceById(id).get().getSalle().getNombreDePlace();
+        return nbPlacesDansLaSalle - nbPrises;
+    }
 }

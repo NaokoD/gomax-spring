@@ -34,4 +34,6 @@ public class SalleService {
     public Salle saveSalle(Salle salle){
         return this.salleRepository.save(salle);
     }
+
+
 }

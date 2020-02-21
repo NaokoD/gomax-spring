@@ -18,6 +18,7 @@ public class Salle {
 	private Long id;
 	private String plan;
 	private Integer numero;
+	private Integer nombreDePlace;
 	
 	@ManyToOne
 	private Cinema cinema;
