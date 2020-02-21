@@ -1,0 +1,17 @@
+ALTER TABLE Film
+CHANGE titre title VARCHAR(255);
+
+ALTER TABLE Film
+CHANGE duree runtime VARCHAR(255);
+
+ALTER TABLE Film
+ADD genre VARCHAR(255);
+
+ALTER TABLE Film
+ADD plot TEXT;
+
+ALTER TABLE Film
+ADD actors VARCHAR(255);
+
+ALTER TABLE Film
+ADD poster VARCHAR(255);

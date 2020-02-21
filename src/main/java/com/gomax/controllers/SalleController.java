@@ -7,16 +7,14 @@ import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gomax.entities.Salle;
 import com.gomax.services.SalleService;
 
 @RestController
 @RequestMapping("/salles")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SalleController {
 
     private SalleService salleService;
@@ -35,14 +33,36 @@ public class SalleController {
     public ResponseEntity<Salle> getSalleById(@PathVariable Long id){
         return new ResponseEntity<>(this.salleService.findSalleById(id).get(), HttpStatus.OK);
     }
+
+    @PostMapping("")
+    public ResponseEntity<Salle> postSalle(@RequestBody Salle salle){
+        return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<Boolean> deleteSalleById(@PathVariable Long id){
+        return new ResponseEntity<>(this.salleService.deleteSalleById(id), HttpStatus.OK);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Salle> putSalle(@RequestBody Salle salle){
+        return new ResponseEntity<>(this.salleService.saveSalle(salle), HttpStatus.OK);
+    }
     
     @GetMapping(value = "/{id}/plan", produces = "application/json" )
-    String getPlan(@PathVariable("id") Salle salle) {
-    	String planXML = salle.getPlan();
+    public String getPlan(@PathVariable("id") Salle salle) {
+        return this.PlanSalleFromXmlToJSon(salle);
+    }
 
-    	JSONObject jsonObject = XML.toJSONObject(planXML);
-    	String planJson = jsonObject.toString();
-    	return planJson;
+
+
+    public  String PlanSalleFromXmlToJSon(Salle salle){
+        String planXML = salle.getPlan();
+        //System.out.println(planXML);
+        JSONObject jsonObject = XML.toJSONObject(planXML);
+        String planJson = jsonObject.toString();
+        System.out.println(planJson);
+        return planJson;
     }
     
 }

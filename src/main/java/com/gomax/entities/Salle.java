@@ -21,4 +21,5 @@ public class Salle {
 	
 	@ManyToOne
 	private Cinema cinema;
+
 }

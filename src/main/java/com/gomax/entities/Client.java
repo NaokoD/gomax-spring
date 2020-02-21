@@ -2,24 +2,18 @@ package com.gomax.entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 
 @Entity
 @Table(name="client")
+@PrimaryKeyJoinColumn(name = "clientId")
 @Data
-public class Client {
+public class Client extends Utilisateur{
 
-	@Id
-	@GeneratedValue
-	private Long id;
 
-	private String nom;
-	private String prenom;
+
 	private String email;
 	private LocalDate dateDeNaissance;
 	private String adresse;

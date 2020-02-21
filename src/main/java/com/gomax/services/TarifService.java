@@ -31,7 +31,8 @@ public class TarifService {
 		return this.tarifRepository.save(tarif);
 	}
 	
-	public void deleteTarif(Tarif tarif) {
-		this.tarifRepository.delete(tarif);
+	public Boolean deleteTarifById(Long id) {
+		this.tarifRepository.deleteById(id);
+		return this.tarifRepository.existsById(id);
 	}
 }

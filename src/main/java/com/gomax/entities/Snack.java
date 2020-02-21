@@ -39,6 +39,8 @@ public class Snack {
 	// annotation from Jackson
 	@JsonProperty("price")
 	private Double prix;
+
+	private String image;
 	
 	
 	//@ManyToOne
