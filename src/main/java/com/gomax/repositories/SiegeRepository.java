@@ -1,6 +1,7 @@
 package com.gomax.repositories;
 
 import com.gomax.entities.Commande;
+import com.gomax.entities.Seance;
 import com.gomax.entities.Siege;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,10 +15,13 @@ import java.util.Set;
 @Repository
 public interface SiegeRepository extends CrudRepository<Siege, Long> {
 
-    public Set<Siege> findByCommandes(Commande commande);
+    Set<Siege> findByCommandes(Commande commande);
 
-//    @Query(value ="SELECT siege_id as id FROM commande c JOIN commande_siege cs WHERE seance_id = :seanceId", nativeQuery = true)
-//    public Set<Siege> findBySeance(@Param("seanceId") Long seanceId);
+    @Query(value ="SELECT siege_id as id FROM commande c JOIN commande_siege cs ON c.id = cs.commande_id WHERE seance_id = :seanceId ORDER BY id", nativeQuery = true)
+    Set<Siege> findBySeance(@Param("seanceId") Long seanceId);
 //
 //    @Query("SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(:lastName)")
+
+    @Query(value ="SELECT c.sieges as id FROM Commande c")
+    Set<Siege> findSeigesInCommande();
 }

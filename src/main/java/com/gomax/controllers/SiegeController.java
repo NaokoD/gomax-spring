@@ -36,4 +36,14 @@ public class SiegeController {
     public ResponseEntity<Siege> postSiege(@RequestBody Siege siege){
         return new ResponseEntity<>(this.siegeService.saveSiege(siege), HttpStatus.CREATED);
     }
+
+    @GetMapping("/commandes")
+    public ResponseEntity<Set<Siege>> getSiegesInCommandes(){
+        return new ResponseEntity<>(this.siegeService.finSiegesInCommande(), HttpStatus.OK);
+    }
+
+    @GetMapping("/seances/{id}")
+    public ResponseEntity<Set<Siege>> getSiegesInSeances(@PathVariable Long id){
+        return new ResponseEntity<>(this.siegeService.findSiegesBySeance(id), HttpStatus.OK);
+    }
 }
