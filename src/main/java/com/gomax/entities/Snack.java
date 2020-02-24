@@ -19,8 +19,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-
 public class Snack {
 	
 	@Id
@@ -40,8 +38,6 @@ public class Snack {
 	@JsonProperty("price")
 	private Double prix;
 
-
-	
 	
 	//@ManyToOne
 	//private Commande_snack commande_snack;
