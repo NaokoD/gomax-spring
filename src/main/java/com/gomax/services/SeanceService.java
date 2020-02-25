@@ -66,6 +66,35 @@ public class SeanceService {
             return nbPlacesDansLaSalle - this.findNombreDePlaceBySeance(id);
         }else
             return nbPlacesDansLaSalle;
-
     }
+
+    public List<Seance> findSeanceOnMonday(Long id){
+        return  seanceRepo.findSeanceOnMondayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnTuesday(Long id){
+        return  seanceRepo.findSeanceOnTuesdayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnWednesday(Long id){
+        return  seanceRepo.findSeanceOnWednesdayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnThursday(Long id){
+        return  seanceRepo.findSeanceOnThursdayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnFriday(Long id){
+        return  seanceRepo.findSeanceOnFridayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnSaturday(Long id){
+        return  seanceRepo.findSeanceOnSaturdayByFilm(id);
+    }
+
+    public List<Seance> findSeanceOnSunday(Long id){
+        return  seanceRepo.findSeanceOnSundayByFilm(id);
+    }
+
+
 }

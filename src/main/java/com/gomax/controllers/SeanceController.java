@@ -75,4 +75,40 @@ public class SeanceController {
         return new ResponseEntity<>(this.seanceService.findNombreDePlacesRestantesBySeanceById(id), HttpStatus.OK);
     }
 
+
+
+    @GetMapping("/lundi")
+    public ResponseEntity <List<Seance>> getSeanceByOnMondayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnMonday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/mardi")
+    public ResponseEntity <List<Seance>> getSeanceByOnTuesdayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnTuesday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/mercredi")
+    public ResponseEntity <List<Seance>> getSeanceByOnWednesdayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnWednesday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/jeudi")
+    public ResponseEntity <List<Seance>> getSeanceByOnThursdayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnThursday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/vendredi")
+    public ResponseEntity <List<Seance>> getSeanceByOnFridayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnFriday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/samedi")
+    public ResponseEntity <List<Seance>> getSeanceByOnSaturdayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnSaturday(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/dimanche")
+    public ResponseEntity <List<Seance>> getSeanceByOnSundayByFilm(@RequestParam Long id) {
+        return new ResponseEntity<>(this.seanceService.findSeanceOnSunday(id), HttpStatus.OK);
+    }
 }
