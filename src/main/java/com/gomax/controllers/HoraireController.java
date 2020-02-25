@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/horaires")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HoraireController {
 
     private HoraireService horaireService;

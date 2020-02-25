@@ -61,7 +61,7 @@ public class SalleController {
         //System.out.println(planXML);
         JSONObject jsonObject = XML.toJSONObject(planXML);
         String planJson = jsonObject.toString();
-        System.out.println(planJson);
+        //System.out.println(planJson);
         return planJson;
     }
     

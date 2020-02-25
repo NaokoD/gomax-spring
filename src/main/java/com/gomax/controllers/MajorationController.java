@@ -20,7 +20,7 @@ import com.gomax.entities.Majoration;
 
 // @RestController <=> @Component <=> @Bean
 @RestController
-@RequestMapping("/majoration")
+@RequestMapping("/majorations")
 public class MajorationController {
 	
 	private MajorationService majorationService;

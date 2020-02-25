@@ -46,7 +46,12 @@ public class SiegeService {
     public Siege saveSiege(Siege siege){
         return this.siegeRepository.save(siege);
     }
-//    public Set<Siege> findSiegesBySeance(Long seanceId){
-//        return this.siegeRepository.findBySeance(seanceId);
-//    }
+
+    public Set<Siege> findSiegesBySeance(Long seanceId){
+        return this.siegeRepository.findBySeance(seanceId);
+    }
+
+    public Set<Siege> finSiegesInCommande() {
+        return this.siegeRepository.findSeigesInCommande();
+    }
 }

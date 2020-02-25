@@ -13,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/seances")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SeanceController {
 
     private SeanceService  seanceService;
