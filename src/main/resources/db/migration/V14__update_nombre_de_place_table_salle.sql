@@ -1,0 +1,1 @@
+UPDATE salle SET nombre_de_place = 19;
