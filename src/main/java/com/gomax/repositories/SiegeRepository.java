@@ -23,5 +23,5 @@ public interface SiegeRepository extends CrudRepository<Siege, Long> {
 //    @Query("SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(:lastName)")
 
     @Query(value ="SELECT c.sieges as id FROM Commande c")
-    Set<Siege> findSeigesInCommande();
+    Set<Siege> findSiegesInCommande();
 }
