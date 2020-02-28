@@ -19,13 +19,12 @@ public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate date_seance;
+    private LocalDateTime date_seance;
 
     @ManyToOne
     private Salle salle;
     @ManyToOne
     private Film film;
-    @ManyToOne
-    private Horaire horaire;
+
 
 }

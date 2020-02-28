@@ -71,7 +71,7 @@ public class SeanceController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("{id}/nbPlacesRestantes")
+    @GetMapping("/{id}/nbPlacesRestantes")
     public ResponseEntity<Integer> getNombreDePlacesRestantesBySeanceById(@PathVariable Long id) {
         return new ResponseEntity<>(this.seanceService.findNombreDePlacesRestantesBySeanceById(id), HttpStatus.OK);
     }

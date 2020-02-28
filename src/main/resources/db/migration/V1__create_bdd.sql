@@ -38,12 +38,6 @@ CREATE TABLE Snack(
    PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Horaire(
-   id INT NOT NULL AUTO_INCREMENT,
-   horaire TIME NOT NULL,
-   PRIMARY KEY(id)
-)ENGINE=InnoDB;
-
 CREATE TABLE Film(
    id INT NOT NULL AUTO_INCREMENT,
    titre VARCHAR(255) NOT NULL,
@@ -84,14 +78,12 @@ CREATE TABLE Siege(
 
 CREATE TABLE Seance(
    id INT NOT NULL AUTO_INCREMENT,
-   date_seance DATE NOT NULL,
+   date_seance datetime NOT NULL,
    salle_id INT NOT NULL,
    film_id INT NOT NULL,
-   horaire_id INT NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(salle_id) REFERENCES Salle(id),
-   FOREIGN KEY(film_id) REFERENCES Film(id),
-   FOREIGN KEY(horaire_id) REFERENCES Horaire(id)
+   FOREIGN KEY(film_id) REFERENCES Film(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE Commande(
