@@ -52,6 +52,6 @@ public class SiegeService {
     }
 
     public Set<Siege> finSiegesInCommande() {
-        return this.siegeRepository.findSeigesInCommande();
+        return this.siegeRepository.findSiegesInCommande();
     }
 }

@@ -1,4 +1,4 @@
 INSERT INTO majoration (libelle, remise)
 VALUES
-('siege', 2.5),
-('group', 1.5);
+('siege', 0.025),
+('groupe', 0.015);
